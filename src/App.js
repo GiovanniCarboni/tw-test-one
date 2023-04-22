@@ -19,10 +19,18 @@ function App() {
     dispatchTaskAction({ type: "REMOVE_TASK", id });
   };
 
+  const handleEditTask = (id, text) => {
+    dispatchTaskAction({ type: "EDIT_TASK", id, text });
+  };
+
   return (
     <>
       <NewTask onAddTask={handleAddTask} />
-      <TaskList tasks={taskState} onRemoveTask={handleRemoveTask} />
+      <TaskList
+        tasks={taskState}
+        onRemoveTask={handleRemoveTask}
+        onEditTask={handleEditTask}
+      />
     </>
   );
 }
@@ -33,6 +41,11 @@ const taskReducer = (state, action) => {
       return [action.task, ...state];
     case "REMOVE_TASK":
       return state.filter((task) => task.id !== action.id);
+    case "EDIT_TASK":
+      const index = state.findIndex((task) => task.id === action.id);
+      const tasksCopy = [...state];
+      tasksCopy[index] = { ...state[index], text: action.text };
+      return tasksCopy;
     default:
       return defaultTasks;
   }
