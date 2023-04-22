@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TaskContext } from "../../App";
+import { TaskContext } from "../../store/TaskContext";
 
 export default function Actions() {
   const { handleRemoveAllTasks } = useContext(TaskContext);

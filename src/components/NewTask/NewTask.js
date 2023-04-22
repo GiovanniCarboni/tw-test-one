@@ -1,10 +1,9 @@
 import React, { useRef, useContext } from "react";
-import { TaskContext } from "../../App";
+import { TaskContext } from "../../store/TaskContext";
 import { v4 as uuid } from "uuid";
 
 export default function NewTask() {
   const taskInputRef = useRef();
-
   const { handleAddTask } = useContext(TaskContext);
 
   const onAddTask = (e) => {
