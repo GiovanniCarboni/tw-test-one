@@ -1,12 +1,18 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import NewTask from "./components/NewToDo/NewTask";
 import TaskList from "./components/Task/TaskList";
 
 function App() {
   const [taskState, dispatchTaskAction] = useReducer(taskReducer, defaultTasks);
 
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(taskState));
+  }, [taskState]);
+
   const handleAddTask = (task) => {
-    dispatchTaskAction({ type: "ADD_TASK", task });
+    setTimeout(() => {
+      dispatchTaskAction({ type: "ADD_TASK", task });
+    }, 600);
   };
 
   const handleRemoveTask = (id) => {
@@ -32,6 +38,8 @@ const taskReducer = (state, action) => {
   }
 };
 
-const defaultTasks = [];
+const defaultTasks = localStorage.getItem("tasks")
+  ? JSON.parse(localStorage.getItem("tasks"))
+  : [];
 
 export default App;
