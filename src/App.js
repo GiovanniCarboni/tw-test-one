@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import NewTask from "./components/NewToDo/NewTask";
+import Actions from "./components/Actions/Actions";
 import TaskList from "./components/Task/TaskList";
 
 export const TaskContext = React.createContext();
@@ -25,15 +26,21 @@ function App() {
     dispatchTaskAction({ type: "EDIT_TASK", id, text });
   };
 
+  const handleRemoveAllTasks = () => {
+    dispatchTaskAction({ type: "REMOVE_ALL" });
+  };
+
   const taskContextValue = {
     handleAddTask,
     handleRemoveTask,
     handleEditTask,
+    handleRemoveAllTasks,
   };
 
   return (
     <TaskContext.Provider value={taskContextValue}>
       <NewTask />
+      <Actions />
       <TaskList tasks={taskState} />
     </TaskContext.Provider>
   );
@@ -50,6 +57,8 @@ const taskReducer = (state, action) => {
       const tasksCopy = [...state];
       tasksCopy[index] = { ...state[index], text: action.text };
       return tasksCopy;
+    case "REMOVE_ALL":
+      return [];
     default:
       return defaultTasks;
   }
