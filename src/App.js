@@ -2,6 +2,8 @@ import React, { useReducer, useEffect } from "react";
 import NewTask from "./components/NewToDo/NewTask";
 import TaskList from "./components/Task/TaskList";
 
+export const TaskContext = React.createContext();
+
 function App() {
   const [taskState, dispatchTaskAction] = useReducer(taskReducer, defaultTasks);
 
@@ -23,15 +25,17 @@ function App() {
     dispatchTaskAction({ type: "EDIT_TASK", id, text });
   };
 
+  const taskContextValue = {
+    handleAddTask,
+    handleRemoveTask,
+    handleEditTask,
+  };
+
   return (
-    <>
-      <NewTask onAddTask={handleAddTask} />
-      <TaskList
-        tasks={taskState}
-        onRemoveTask={handleRemoveTask}
-        onEditTask={handleEditTask}
-      />
-    </>
+    <TaskContext.Provider value={taskContextValue}>
+      <NewTask />
+      <TaskList tasks={taskState} />
+    </TaskContext.Provider>
   );
 }
 

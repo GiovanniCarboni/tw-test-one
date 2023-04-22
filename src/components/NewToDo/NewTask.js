@@ -1,13 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
+import { TaskContext } from "../../App";
 import { v4 as uuid } from "uuid";
 
-export default function NewTask({ onAddTask }) {
+export default function NewTask() {
   const taskInputRef = useRef();
 
-  const handleAddTask = (e) => {
+  const { handleAddTask } = useContext(TaskContext);
+
+  const onAddTask = (e) => {
     e.preventDefault();
 
-    onAddTask({
+    handleAddTask({
       id: uuid(),
       text: taskInputRef.current.value,
     });
@@ -16,7 +19,7 @@ export default function NewTask({ onAddTask }) {
   };
 
   return (
-    <form onSubmit={handleAddTask}>
+    <form onSubmit={onAddTask}>
       <label htmlFor="add-task">Add a new task</label>
       <input id="add-task" ref={taskInputRef} type="text" />
       <input type="submit" value="Add" />

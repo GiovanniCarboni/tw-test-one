@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { TaskContext } from "../../App";
 
-export default function Task({ text, id, onRemoveTask, onEditTask }) {
+export default function Task({ text, id }) {
   const [isEditing, setIsEditing] = useState(false);
   const [labelValue, setLabelValue] = useState(text);
+
+  const { handleEditTask, handleRemoveTask } = useContext(TaskContext);
 
   const handleEdit = ({ target }) => {
     setLabelValue(target.value);
@@ -10,7 +13,7 @@ export default function Task({ text, id, onRemoveTask, onEditTask }) {
 
   const handleSaveEdit = () => {
     setIsEditing(false);
-    onEditTask(id, labelValue);
+    handleEditTask(id, labelValue);
   };
 
   return (
@@ -24,7 +27,7 @@ export default function Task({ text, id, onRemoveTask, onEditTask }) {
       )}
       {!isEditing && <label htmlFor={id}>{labelValue}</label>}
       {!isEditing && <button onClick={() => setIsEditing(true)}>Edit</button>}
-      <button onClick={() => onRemoveTask(id)}>Remove</button>
+      <button onClick={() => handleRemoveTask(id)}>Remove</button>
     </div>
   );
 }
