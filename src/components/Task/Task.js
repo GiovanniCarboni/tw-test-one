@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { TaskContext } from "../../store/TaskContext";
 
+import classes from "./Task.module.css";
+
 export default function Task({ text, id, checked }) {
   const [isEditing, setIsEditing] = useState(false);
   const [labelValue, setLabelValue] = useState(text);
@@ -22,7 +24,7 @@ export default function Task({ text, id, checked }) {
   };
 
   return (
-    <div>
+    <li className={classes.task}>
       <input id={id} type="checkbox" checked={checked} onChange={handleCheck} />
       {isEditing && (
         <>
@@ -37,6 +39,6 @@ export default function Task({ text, id, checked }) {
         </>
       )}
       <button onClick={() => handleRemoveTask(id)}>Remove</button>
-    </div>
+    </li>
   );
 }

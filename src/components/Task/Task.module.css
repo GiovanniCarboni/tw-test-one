@@ -1,0 +1,19 @@
+.task {
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task input[type="checkbox"] {
+  height: 2rem;
+  width: 2rem;
+}
+
+.task input[type="text"],
+.task label {
+  display: inline-block;
+  width: 100%;
+}

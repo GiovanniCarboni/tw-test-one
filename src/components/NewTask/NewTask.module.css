@@ -1,0 +1,19 @@
+.form {
+  padding: 1rem 0;
+}
+
+.form label {
+  display: block;
+  text-align: center;
+  font-size: var(--text-md);
+}
+
+.form input[type="text"] {
+  width: 100%;
+  padding: 0.8rem;
+}
+
+.form input[type="submit"] {
+  width: 100%;
+  padding: 0.3rem;
+}

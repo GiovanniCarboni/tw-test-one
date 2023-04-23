@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { TaskContext } from "../../store/TaskContext";
 
+import classes from "./Actions.module.css";
+
 export default function Actions() {
   const {
     handleRemoveAllTasks,
@@ -10,7 +12,7 @@ export default function Actions() {
   } = useContext(TaskContext);
 
   return (
-    <div>
+    <div className={classes.actions}>
       <button
         onClick={handleUncheckAllTasks}
         disabled={!taskState.some((task) => task.checked)}
