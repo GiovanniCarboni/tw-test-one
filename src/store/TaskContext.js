@@ -80,7 +80,6 @@ const taskReducer = (state, action) => {
       const index = state.findIndex((task) => task.id === action.id);
       const tasksCopy = [...state];
       tasksCopy[index] = { ...state[index], checked: action.checked };
-      console.log(tasksCopy);
       return tasksCopy;
     }
 
