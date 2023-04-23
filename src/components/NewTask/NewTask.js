@@ -12,6 +12,7 @@ export default function NewTask() {
     handleAddTask({
       id: uuid(),
       text: taskInputRef.current.value,
+      checked: false,
     });
 
     taskInputRef.current.value = "";
