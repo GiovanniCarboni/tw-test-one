@@ -16,6 +16,8 @@ export function PopupContextProvider({ children }) {
     setMessage(message);
     setIsDisplayed(true);
 
+    if (timer) clearTimeout(timer);
+
     timer = setTimeout(() => {
       handleClose();
     }, 3000);
