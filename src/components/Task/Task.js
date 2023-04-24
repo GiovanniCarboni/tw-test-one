@@ -36,7 +36,12 @@ export default function Task({ text, id, checked }) {
       )}
       {!isEditing && (
         <>
-          <label htmlFor={id}>{labelValue}</label>
+          <label
+            style={{ textDecoration: checked && "line-through" }}
+            htmlFor={id}
+          >
+            {labelValue}
+          </label>
           <button className={classes.btn} onClick={() => setIsEditing(true)}>
             Edit
           </button>
