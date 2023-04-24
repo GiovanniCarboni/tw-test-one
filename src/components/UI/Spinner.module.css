@@ -1,16 +1,10 @@
-.spinner {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-}
-
 .spinner div {
-  border: 8px solid rgb(213, 211, 211);
-  border-top: 8px solid #3498db;
+  border: 8px solid #817e84;
+  border-top: 8px solid var(--accent);
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {

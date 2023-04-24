@@ -1,4 +1,5 @@
 .popup {
+  outline: 2px solid var(--accent);
   position: fixed;
   bottom: 1rem;
   left: 50%;
@@ -30,7 +31,7 @@
 }
 
 .popup div {
-  color: #fff;
+  color: var(--accent);
   font-size: 120%;
   font-weight: bold;
   margin-left: 8px;

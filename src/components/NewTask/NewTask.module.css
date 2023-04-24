@@ -1,32 +1,24 @@
 .form {
-  padding: 1rem 0;
+  display: flex;
+  gap: 1rem;
+  height: 4rem;
 }
 
-.form label {
-  display: block;
-  text-align: center;
-  font-size: var(--text-md);
-  margin-bottom: 0.8rem;
-}
-
-.form input[type="text"] {
-  width: 100%;
-  padding: 0.8rem;
-  border: 3px solid var(--primary);
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-}
-
-.form input[type="text"]:focus {
+.form input,
+.form button {
+  border-radius: var(--radius-l);
+  border: none;
   outline: none;
 }
 
-.form input[type="submit"] {
-  width: 100%;
-  padding: 0.3rem;
-  background-color: var(--primary);
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 0 0 5px 5px;
+.form input[type="text"] {
+  flex-grow: 1;
+  background-color: var(--gray-md);
+  padding: 0 1rem;
+  /* position: relative; */
+}
+
+.form button {
+  width: 4rem;
+  background-color: var(--gray-light);
 }

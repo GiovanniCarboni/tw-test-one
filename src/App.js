@@ -8,6 +8,7 @@ import { TaskContextProvider } from "./store/TaskContext";
 function App() {
   return (
     <TaskContextProvider>
+      <h1>Task list</h1>
       <NewTask />
       <Actions />
       <TaskList />

@@ -1,14 +1,16 @@
 import React, { useRef, useContext, useState } from "react";
-import ReactDOM from "react-dom";
 
 import { v4 as uuid } from "uuid";
+
 import Popup from "../UI/Popup";
+import Spinner from "../UI/Spinner";
+
+import { ReactComponent as AddIco } from "../../assets/icons/add.svg";
 
 import classes from "./NewTask.module.css";
 
 import { TaskContext } from "../../store/TaskContext";
 import PopupContext from "../../store/PopupContext";
-import Spinner from "../UI/Spinner";
 
 export default function NewTask() {
   const taskInputRef = useRef();
@@ -44,18 +46,16 @@ export default function NewTask() {
 
   return (
     <form className={classes.form} onSubmit={onAddTask}>
-      {/* {isLoading && <Spinner />} */}
-      {isLoading &&
-        ReactDOM.createPortal(<Spinner />, document.querySelector("#popup"))}
       {isDisplayed && <Popup />}
-      <label htmlFor="add-task">Add a new task</label>
       <input
-        id="add-task"
         placeholder="Type your task here..."
         ref={taskInputRef}
         type="text"
       />
-      <input type="submit" value="Add" />
+      <button>
+        {!isLoading && <AddIco />}
+        {isLoading && <Spinner />}
+      </button>
     </form>
   );
 }

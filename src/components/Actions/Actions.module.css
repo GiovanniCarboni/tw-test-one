@@ -6,5 +6,9 @@
 }
 
 .actions button {
-  background-color: var(--background-dark);
+  background-color: var(--gray-dark);
+}
+
+.actions button:disabled {
+  color: var(--gray-md);
 }

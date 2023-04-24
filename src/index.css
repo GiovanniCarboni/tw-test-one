@@ -9,18 +9,20 @@
 :root {
   /* DIMENTIONS */
   --text-md: 1.6rem;
+  --radius-l: 10px;
+  --radius-s: 6px;
   /* COLORS */
-  --primary: #2b6777;
-  --accent: #52ab98;
-  --background: #f2f2f2;
-  --background-dark: #c8d8e4;
-  --font-dark: #444444;
-  --font-light: #555555;
-  --danger: #eb4d4b;
+  --accent: #cc853d;
+  --background: #1e1e1e;
+  --font-color: #d4d3d4;
+  --gray-dark: #2e2e2e;
+  --gray-md: #434343;
+  --gray-light: #515252;
 }
 
 html {
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--font-color);
+  font-family: Calibri, sans-serif;
 }
 
 body {
@@ -33,12 +35,45 @@ body {
   padding: 1rem;
 }
 
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2rem 0;
+}
+
 ul {
   list-style: none;
 }
 
+input {
+  color: inherit;
+}
+
+/* custom style with the help of: https://moderncss.dev/pure-css-custom-checkbox-style/ */
 input[type="checkbox"] {
   cursor: pointer;
+  appearance: none;
+  appearance: none;
+  margin: 0;
+  font: inherit;
+  background-color: var(--accent);
+  height: 1.8rem;
+  width: 2.2rem;
+  margin-right: 1.2rem;
+  border-radius: var(--radius-s);
+  display: grid;
+  place-content: center;
+}
+input[type="checkbox"]:hover {
+  outline: 3px solid var(--gray-light);
+}
+input[type="checkbox"]:checked::before {
+  content: "";
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: var(--radius-s);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  background-color: #fff;
 }
 
 input[type="text"] {
@@ -51,13 +86,10 @@ button {
   border-radius: 3px;
   border: none;
   cursor: pointer;
+  color: inherit;
 }
 
 button:hover,
 button:active {
-  outline: 3px solid #313030;
-}
-
-.danger {
-  background-color: var(--danger) !important;
+  outline: 3px solid var(--gray-light);
 }

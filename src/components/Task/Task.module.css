@@ -1,18 +1,10 @@
 .task {
-  padding: 0 1rem;
-  border-bottom: 2px solid gray;
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
 .task:last-child {
   border: none;
-}
-
-.task input[type="checkbox"] {
-  height: 2rem;
-  width: 2rem;
 }
 
 .task label {
@@ -21,11 +13,48 @@
 
 .task input[type="text"],
 .task label {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: var(--gray-dark);
   width: 100%;
-  padding: 2rem 0;
+  border-radius: var(--radius-s) 0 0 var(--radius-s);
+  padding: 0 0.8rem;
   font-size: 1.2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
 }
 
-.btn {
-  background-color: var(--accent);
+.task input[type="text"]:focus {
+  z-index: 999;
+}
+
+.task button {
+  border-radius: 0;
+  width: 3rem;
+  height: 2rem;
+  background-color: var(--gray-dark);
+  display: flex;
+  align-items: center;
+}
+
+.task .remove {
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+}
+
+.task .action {
+  width: 3.4rem;
+  border-left: 3px solid var(--background);
+  border-right: 3px solid var(--background);
+}
+
+.action:hover,
+.action:focus,
+.remove:hover {
+  z-index: 999;
+}
+
+.crossed {
+  /* text-decoration: line-through 2px var(--accent); */
+  color: var(--gray-md);
 }
