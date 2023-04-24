@@ -11,9 +11,7 @@ export function TaskContextProvider({ children }) {
   }, [taskState]);
 
   const handleAddTask = (task) => {
-    setTimeout(() => {
-      dispatchTaskAction({ type: "ADD_TASK", task });
-    }, 600);
+    dispatchTaskAction({ type: "ADD_TASK", task });
   };
 
   const handleRemoveTask = (id) => {
