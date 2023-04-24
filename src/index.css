@@ -7,11 +7,24 @@
 }
 
 :root {
+  /* DIMENTIONS */
   --text-md: 1.6rem;
+  /* COLORS */
+  --primary: #2b6777;
+  --accent: #52ab98;
+  --background: #f2f2f2;
+  --background-dark: #c8d8e4;
+  --font-dark: #444444;
+  --font-light: #555555;
+  --danger: #f7736c;
 }
 
 html {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--background);
 }
 
 #root {
@@ -22,4 +35,29 @@ html {
 
 ul {
   list-style: none;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+input[type="text"] {
+  background-color: inherit;
+  border: none;
+}
+
+button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover,
+button:active {
+  outline: 3px solid #313030;
+}
+
+.danger {
+  background-color: var(--danger) !important;
 }

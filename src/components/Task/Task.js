@@ -29,16 +29,22 @@ export default function Task({ text, id, checked }) {
       {isEditing && (
         <>
           <input type="text" value={labelValue} onChange={handleEdit} />
-          <button onClick={handleSaveEdit}>Save</button>
+          <button className={classes.btn} onClick={handleSaveEdit}>
+            Save
+          </button>
         </>
       )}
       {!isEditing && (
         <>
           <label htmlFor={id}>{labelValue}</label>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+          <button className={classes.btn} onClick={() => setIsEditing(true)}>
+            Edit
+          </button>
         </>
       )}
-      <button onClick={() => handleRemoveTask(id)}>Remove</button>
+      <button className="danger" onClick={() => handleRemoveTask(id)}>
+        Remove
+      </button>
     </li>
   );
 }

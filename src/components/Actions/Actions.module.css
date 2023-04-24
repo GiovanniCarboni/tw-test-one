@@ -4,3 +4,7 @@
   justify-content: center;
   gap: 1.2rem;
 }
+
+.actions button {
+  background-color: var(--background-dark);
+}

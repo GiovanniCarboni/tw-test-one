@@ -25,7 +25,13 @@ export default function Actions() {
       >
         Check all
       </button>
-      <button onClick={handleRemoveAllTasks}>Remove all</button>
+      <button
+        className="danger"
+        onClick={handleRemoveAllTasks}
+        disabled={taskState.length < 1}
+      >
+        Remove all
+      </button>
     </div>
   );
 }
