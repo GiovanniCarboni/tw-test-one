@@ -15,6 +15,10 @@ export default function Task({ text, id, checked }) {
   const { handleEditTask, handleRemoveTask, handleCheckTask } =
     useContext(TaskContext);
 
+  const handleStartEdit = () => {
+    setIsEditing(true);
+  };
+
   const handleEdit = ({ target }) => {
     setLabelValue(target.value);
   };
@@ -26,10 +30,16 @@ export default function Task({ text, id, checked }) {
     }
     setIsEditing(false);
     handleEditTask(id, labelValue);
+    displayMessage("Task saved");
   };
 
   const handleCheck = () => {
     handleCheckTask(id, !checked);
+  };
+
+  const handleRemove = () => {
+    handleRemoveTask(id);
+    displayMessage("Task removed");
   };
 
   return (
@@ -37,7 +47,13 @@ export default function Task({ text, id, checked }) {
       <input id={id} type="checkbox" checked={checked} onChange={handleCheck} />
       {isEditing && (
         <>
-          <input type="text" value={labelValue} onChange={handleEdit} />
+          <input
+            autoFocus
+            type="text"
+            value={labelValue}
+            onChange={handleEdit}
+            onBlur={handleSaveEdit}
+          />
           <button className={classes.action} onClick={handleSaveEdit}>
             <CheckmarkIco />
           </button>
@@ -48,12 +64,12 @@ export default function Task({ text, id, checked }) {
           <label className={checked ? classes.crossed : ""} htmlFor={id}>
             {labelValue}
           </label>
-          <button className={classes.action} onClick={() => setIsEditing(true)}>
+          <button className={classes.action} onClick={handleStartEdit}>
             <EditIco />
           </button>
         </>
       )}
-      <button className={classes.remove} onClick={() => handleRemoveTask(id)}>
+      <button className={classes.remove} onClick={handleRemove}>
         <TrashIco />
       </button>
     </li>
