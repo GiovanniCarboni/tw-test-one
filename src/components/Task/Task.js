@@ -28,6 +28,10 @@ export default function Task({ text, id, checked }) {
       displayMessage("Cannot set empty task");
       return;
     }
+    if (labelValue.trim().length > 30) {
+      displayMessage("Task name too long (max 30 characters)");
+      return;
+    }
     setIsEditing(false);
     handleEditTask(id, labelValue);
     displayMessage("Task saved");

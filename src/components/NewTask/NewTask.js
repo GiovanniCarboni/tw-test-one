@@ -31,13 +31,17 @@ export default function NewTask() {
         return;
       }
 
+      if (input.value.trim().length > 30) {
+        displayMessage("Task name too long (max 30 characters)");
+        return;
+      }
+
       handleAddTask({
         id: uuid(),
         text: input.value,
         checked: false,
       });
 
-      console.log("ciao");
       displayMessage("Task added successfully");
 
       input.value = "";
